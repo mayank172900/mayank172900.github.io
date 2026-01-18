@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Research threads and builds by Mayank Sharma. Leakage-aware time series, robustness, and control." />
+    <meta name="description" content="Research and projects by Mayank Sharma. Time-series analysis, stochastic processes, numerical optimization, and control." />
     <title>Mayank Sharma</title>
     <script>
       (function () {
@@ -24,23 +24,64 @@
         <div class="title-block">
           <h1>Mayank Sharma</h1>
           <p class="lede">
-            I am a B.Tech student at IIT Jodhpur (Engineering Science, majors in Computer Science and Electrical Engineering).
-            I work on time series and control problems where protocol details change conclusions.
-          </p>
-          <p class="note">
-            I like problems where you can be wrong for subtle reasons: leakage in time series, non-stationarity, reward misspecification, and
-            distribution shift.
-          </p>
-          <p class="fineprint masthead-fineprint">
-            A few defaults I try to keep: avoid random splits on time series, treat transaction costs as first-order, and write down what would
-            falsify a result.
+            I am a B.Tech student at IIT Jodhpur (Engineering Science, majors in Computer Science and Electrical Engineering, Aug 2023 to May 2027).
+            I work on time-series analysis, stochastic processes, numerical optimization, and control.
           </p>
         </div>
 
-        <div class="controls" aria-label="Site controls">
-          <div class="theme" role="group" aria-label="Theme">
-            <button class="btn btn-quiet" type="button" data-theme-value="light">Light</button>
-            <button class="btn btn-quiet" type="button" data-theme-value="dark">Dark</button>
+        <div class="masthead-aside">
+          <div class="portrait" data-portrait>
+            <svg class="portrait-fallback" viewBox="0 0 80 80" aria-hidden="true">
+              <defs>
+                <linearGradient id="portraitGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="currentColor" stop-opacity="0.22" />
+                  <stop offset="1" stop-color="currentColor" stop-opacity="0.06" />
+                </linearGradient>
+              </defs>
+              <circle cx="40" cy="40" r="36" fill="url(#portraitGradient)" stroke="currentColor" stroke-opacity="0.22" />
+              <path
+                d="M18 48c8-12 14-18 22-18s14 6 22 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-opacity="0.4"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M18 48c6 10 14 14 22 14s16-4 22-14"
+                fill="none"
+                stroke="currentColor"
+                stroke-opacity="0.22"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22 38l6-6 6 6 6-10 6 4 6-8"
+                fill="none"
+                stroke="currentColor"
+                stroke-opacity="0.5"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <img
+              class="portrait-img"
+              src="./assets/headshot.jpg"
+              alt="Portrait"
+              width="112"
+              height="112"
+              loading="lazy"
+              decoding="async"
+              hidden
+            />
+          </div>
+
+          <div class="controls" aria-label="Site controls">
+            <div class="theme" role="group" aria-label="Theme">
+              <button class="btn btn-quiet" type="button" data-theme-value="light">Light</button>
+              <button class="btn btn-quiet" type="button" data-theme-value="dark">Dark</button>
+            </div>
           </div>
         </div>
       </div>
@@ -52,9 +93,9 @@
       </div>
 
       <nav class="index" aria-label="On-page navigation">
-        <a href="#threads">Threads</a>
-        <a href="#work">Work</a>
-        <a href="#builds">Builds</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
         <a href="#tools">Tools</a>
         <a href="#cv">CV</a>
         <a href="#contact">Contact</a>
@@ -62,16 +103,25 @@
     </header>
 
     <main id="content" class="content">
-      <section id="threads" aria-labelledby="threads-title">
+      <section id="research" aria-labelledby="research-title">
         <div class="section-head">
-          <h2 id="threads-title">Threads</h2>
+          <h2 id="research-title">Research</h2>
           <div class="section-actions">
-            <button class="btn btn-quiet" type="button" data-details-scope="threads" data-details-action="open">Open all</button>
-            <button class="btn btn-quiet" type="button" data-details-scope="threads" data-details-action="close">Close all</button>
+            <button class="btn btn-quiet" type="button" data-details-scope="research" data-details-action="open">Open all</button>
+            <button class="btn btn-quiet" type="button" data-details-scope="research" data-details-action="close">Close all</button>
           </div>
         </div>
 
-        <form class="filters" data-filter-scope="threads" aria-label="Thread filters">
+        <p class="section-lede">Short summaries of current research and collaborations.</p>
+
+        <form class="filters" data-filter-scope="research" aria-label="Research filters">
+          <div class="filter-row">
+            <label class="filter-label">
+              <span class="filter-label-text">Search</span>
+              <input class="filter-input" type="search" name="q" autocomplete="off" inputmode="search" placeholder="Type to filter" />
+            </label>
+            <button class="btn btn-quiet" type="reset">Clear</button>
+          </div>
           <fieldset class="filter-group">
             <legend class="filter-legend">Filter by theme (intersection)</legend>
             <label class="chip">
@@ -95,8 +145,8 @@
               <span>Control</span>
             </label>
             <label class="chip">
-              <input type="checkbox" name="tag" value="robustness" />
-              <span>Robustness</span>
+              <input type="checkbox" name="tag" value="optimization" />
+              <span>Optimization</span>
             </label>
             <label class="chip">
               <input type="checkbox" name="tag" value="distribution-shift" />
@@ -107,66 +157,108 @@
               <span>Algorithms</span>
             </label>
           </fieldset>
-          <div class="filter-status" aria-live="polite" data-filter-status="threads"></div>
+          <div class="filter-status" aria-live="polite" data-filter-status="research"></div>
         </form>
 
-        <div class="items" data-details-container="threads">
-          <article class="item" data-kind="threads" data-tags="time-series leakage sentiment robustness">
+        <div class="items" data-details-container="research">
+          <article class="item" data-kind="research" data-tags="time-series leakage sentiment">
             <details>
               <summary>
+                <span class="item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 19V5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M4 19H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path
+                      d="M6 15l3-4 3 3 3-5 3 2"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path d="M13 6v12" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2.2 2.2" />
+                  </svg>
+                </span>
                 <span class="item-title">Leakage-aware time-series evaluation</span>
                 <span class="item-meta">University of Birmingham (Dubai Campus), May 2025 to present</span>
               </summary>
               <div class="item-body">
                 <p class="item-note">
-                  Advisor: Prof. Monita Baruah
+                  Advisor: Monita Baruah
                 </p>
                 <ul class="bullets">
                   <li>
-                    Built an out-of-fold sentiment pipeline using teacher-student distillation (FinBERT to RATAT),
-                    with embargoed splits, to produce daily sentiment signals for AAPL, NVDA, and BTC-USD.
+                    Developed a leakage-controlled out-of-fold sentiment feature pipeline with embargoed time-series splits, producing daily
+                    sentiment signals for AAPL, NVDA, and BTC-USD.
                   </li>
                   <li>
                     Compared price-only vs sentiment-augmented forecasting and trading using purged CV,
                     Diebold-Mariano / Clark-West tests, and cost-aware backtests.
                   </li>
                   <li>
-                    Readout: modest uplift on NVDA, degradation on BTC and AAPL under the same protocol.
+                    Observed strong asset dependence: modest uplift on NVDA, degradation on BTC and AAPL under the same protocol.
                   </li>
                 </ul>
-                <p class="fineprint">
-                  I care about protocols that make negative results legible, not embarrassing.
-                </p>
               </div>
             </details>
           </article>
 
-          <article class="item" data-kind="threads" data-tags="rl control robustness">
+          <article class="item" data-kind="research" data-tags="rl control optimization">
             <details>
               <summary>
+                <span class="item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 17c2-6 5-10 9-10s7 4 5 10"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path d="M19 17l-2-2m2 2l-2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <circle cx="7" cy="17" r="1.6" stroke="currentColor" stroke-width="1.6" />
+                  </svg>
+                </span>
                 <span class="item-title">Reward design in stochastic control</span>
                 <span class="item-meta">North Carolina State University (remote), Jan 2026 to present</span>
               </summary>
               <div class="item-body">
-                <p class="item-note">Advisor: Prof. Aritra Mitra</p>
+                <p class="item-note">Advisor: Aritra Mitra</p>
                 <ul class="bullets">
                   <li>Studying reward design in control settings, especially where the reward is an imperfect proxy for what we want.</li>
                   <li>Analyzing policy optimization under stochastic dynamics and reward misspecification, including stability and sensitivity.</li>
-                  <li>As an implementation check, I built an HJB PDE solver for a stochastic inventory control toy problem (Nov 2024).</li>
                 </ul>
                 <p class="fineprint">This is early-stage work. I am treating it as a careful reading and experiment loop.</p>
               </div>
             </details>
           </article>
 
-          <article class="item" data-kind="threads" data-tags="distribution-shift robustness">
+          <article class="item" data-kind="research" data-tags="distribution-shift">
             <details>
               <summary>
+                <span class="item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M4 18c2-7 4-11 8-11s6 4 8 11"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      opacity="0.55"
+                    />
+                    <path
+                      d="M4 18c1.6-5.3 3.7-8 6.5-8s5 2.7 6.5 8"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
                 <span class="item-title">Distribution shift and test-time adaptation</span>
                 <span class="item-meta">IIT Jodhpur, Dec 2025 to present</span>
               </summary>
               <div class="item-body">
-                <p class="item-note">Advisor: Prof. Pratik Mazumder</p>
+                <p class="item-note">Advisor: Pratik Mazumder</p>
                 <ul class="bullets">
                   <li>Studying FTAT methods that let a pre-trained model adapt during deployment.</li>
                   <li>Focusing on improving performance under shifting distributions without access to original training data.</li>
@@ -175,18 +267,31 @@
             </details>
           </article>
 
-          <article class="item" data-kind="threads" data-tags="algorithms">
+          <article class="item" data-kind="research" data-tags="algorithms">
             <details>
               <summary>
+                <span class="item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="7" cy="8" r="2" stroke="currentColor" stroke-width="1.6" />
+                    <circle cx="17" cy="8" r="2" stroke="currentColor" stroke-width="1.6" />
+                    <circle cx="12" cy="16" r="2" stroke="currentColor" stroke-width="1.6" />
+                    <path
+                      d="M9 8h6M8.4 10.2l2.9 4M15.6 10.2l-2.9 4"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
                 <span class="item-title">Algorithms on hard graphs</span>
                 <span class="item-meta">IIT Jodhpur, Aug 2024 to Nov 2024</span>
               </summary>
               <div class="item-body">
-                <p class="item-note">Advisor: Prof. Lawqueen Kanesh</p>
+                <p class="item-note">Advisor: Lawqueen Kanesh</p>
                 <ul class="bullets">
                   <li>Worked on NP-hard graph optimization with formal proofs for time complexity bounds.</li>
                   <li>Implemented FPT algorithms including kernelization, and benchmarked against greedy baselines.</li>
-                  <li>In competitive settings, I have built heuristics for large network optimization (ICPC 2025 Online Winter Challenge).</li>
                 </ul>
               </div>
             </details>
@@ -194,23 +299,64 @@
         </div>
       </section>
 
-      <section id="builds" aria-labelledby="builds-title">
+      <section id="projects" aria-labelledby="projects-title">
         <div class="section-head">
-          <h2 id="builds-title">Builds</h2>
+          <h2 id="projects-title">Projects</h2>
           <div class="section-actions">
-            <button class="btn btn-quiet" type="button" data-details-scope="builds" data-details-action="open">Open all</button>
-            <button class="btn btn-quiet" type="button" data-details-scope="builds" data-details-action="close">Close all</button>
+            <button class="btn btn-quiet" type="button" data-details-scope="projects" data-details-action="open">Open all</button>
+            <button class="btn btn-quiet" type="button" data-details-scope="projects" data-details-action="close">Close all</button>
           </div>
         </div>
 
-        <div class="items" data-details-container="builds">
+        <p class="section-lede">A few projects and prototypes, mostly for numerical experiments and systems work.</p>
+
+        <div class="items" data-details-container="projects">
           <article class="item" data-kind="build">
             <details>
               <summary>
+                <span class="item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 6h12v12H6z" stroke="currentColor" stroke-width="1.6" />
+                    <path d="M6 10h12M6 14h12M10 6v12M14 6v12" stroke="currentColor" stroke-width="1.6" opacity="0.25" />
+                    <path
+                      d="M7 15c3-4 5-6 8-6 2 0 3 1 4 3"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
                 <span class="item-title">Stochastic optimal control simulation and HJB PDE solving</span>
                 <span class="item-meta">Independent project, Nov 2024</span>
               </summary>
               <div class="item-body">
+                <div class="item-media" aria-hidden="true" data-media>
+                  <img
+                    class="item-shot"
+                    data-src="./assets/shots/stochastic-control.png"
+                    alt=""
+                    width="960"
+                    height="540"
+                    loading="lazy"
+                    decoding="async"
+                    hidden
+                  />
+                  <svg class="item-diagram" viewBox="0 0 120 72" fill="none">
+                    <path d="M16 12h88v48H16z" stroke="currentColor" stroke-width="2" opacity="0.32" />
+                    <path d="M16 24h88M16 36h88M16 48h88" stroke="currentColor" stroke-width="2" opacity="0.12" />
+                    <path d="M32 12v48M48 12v48M64 12v48M80 12v48" stroke="currentColor" stroke-width="2" opacity="0.12" />
+                    <path
+                      d="M22 52c14-18 24-28 38-28 12 0 20 8 28 22"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      opacity="0.6"
+                    />
+                    <path d="M88 46l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+                  </svg>
+                </div>
                 <ul class="bullets">
                   <li>Simulated stochastic inventory dynamics and boundary controls under Brownian Motion constraints (Python, NumPy).</li>
                   <li>Implemented a numerical solver for the Hamilton-Jacobi-Bellman PDE to derive optimal control policies.</li>
@@ -223,10 +369,54 @@
           <article class="item" data-kind="build">
             <details>
               <summary>
+                <span class="item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="5" y="7" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.6" />
+                    <rect x="12" y="10" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.6" opacity="0.65" />
+                    <path
+                      d="M12 11.5l-2-2.5M12 11.5l-2 2.5"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      opacity="0.6"
+                    />
+                  </svg>
+                </span>
                 <span class="item-title">Blockchain supply chain management system</span>
                 <span class="item-meta">IIT Jodhpur, Apr 2025</span>
               </summary>
               <div class="item-body">
+                <div class="item-media" aria-hidden="true" data-media>
+                  <img
+                    class="item-shot"
+                    data-src="./assets/shots/supply-chain.png"
+                    alt=""
+                    width="960"
+                    height="540"
+                    loading="lazy"
+                    decoding="async"
+                    hidden
+                  />
+                  <svg class="item-diagram" viewBox="0 0 120 72" fill="none">
+                    <rect x="18" y="22" width="28" height="28" rx="6" stroke="currentColor" stroke-width="2" opacity="0.35" />
+                    <rect x="46" y="18" width="28" height="28" rx="6" stroke="currentColor" stroke-width="2" opacity="0.22" />
+                    <rect x="74" y="22" width="28" height="28" rx="6" stroke="currentColor" stroke-width="2" opacity="0.35" />
+                    <path
+                      d="M46 36h-6m34 0h-6"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      opacity="0.55"
+                    />
+                    <path
+                      d="M22 54c10-8 22-12 38-12s28 4 38 12"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      opacity="0.18"
+                    />
+                  </svg>
+                </div>
                 <ul class="bullets">
                   <li>Built a distributed logging core in C++ with OpenSSL, with Python bindings (Pybind11) for scripting and visualization.</li>
                   <li>Added REST services and a Streamlit dashboard for real-time tracking of product flows.</li>
@@ -238,10 +428,55 @@
           <article class="item" data-kind="build">
             <details>
               <summary>
+                <span class="item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M4 14c2 0 2-6 4-6s2 6 4 6 2-6 4-6 2 6 4 6"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path d="M4 18H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.28" />
+                    <circle cx="8" cy="8" r="1.4" stroke="currentColor" stroke-width="1.6" opacity="0.55" />
+                  </svg>
+                </span>
                 <span class="item-title">Short-term energy load forecasting with LSTMs</span>
-                <span class="item-meta">Independent ML project, Oct 2024</span>
+                <span class="item-meta">Independent project (PyTorch, time series modeling), Oct 2024</span>
               </summary>
               <div class="item-body">
+                <div class="item-media" aria-hidden="true" data-media>
+                  <img
+                    class="item-shot"
+                    data-src="./assets/shots/energy-forecasting.png"
+                    alt=""
+                    width="960"
+                    height="540"
+                    loading="lazy"
+                    decoding="async"
+                    hidden
+                  />
+                  <svg class="item-diagram" viewBox="0 0 120 72" fill="none">
+                    <path d="M16 50H104" stroke="currentColor" stroke-width="2" opacity="0.18" stroke-linecap="round" />
+                    <path
+                      d="M16 44c10 0 10-18 20-18s10 18 20 18 10-18 20-18 10 18 20 18"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      opacity="0.6"
+                    />
+                    <path
+                      d="M26 52c12 6 24 8 34 8s22-2 34-8"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      opacity="0.2"
+                    />
+                    <circle cx="36" cy="26" r="4.5" stroke="currentColor" stroke-width="2" opacity="0.35" />
+                    <path d="M33 26h6M36 23v6" stroke="currentColor" stroke-width="2" opacity="0.25" stroke-linecap="round" />
+                  </svg>
+                </div>
                 <ul class="bullets">
                   <li>Built an LSTM forecasting model for hourly energy consumption using historical and meteorological features.</li>
                   <li>Used lag features, rolling statistics, and Fourier-based seasonality features.</li>
@@ -250,74 +485,48 @@
               </div>
             </details>
           </article>
-
-          <article class="item" data-kind="build">
-            <details>
-              <summary>
-                <span class="item-title">AmplifyME finance accelerator</span>
-                <span class="item-meta">Aug 2025</span>
-              </summary>
-              <div class="item-body">
-                <ul class="bullets">
-                  <li>Sales and trading simulations; ranked top 22%.</li>
-                  <li>Managed a simulated USD 20M client portfolio under volatile market regimes.</li>
-                </ul>
-              </div>
-            </details>
-          </article>
         </div>
       </section>
 
-      <section id="work" aria-labelledby="work-title">
-        <h2 id="work-title">Work</h2>
+      <section id="experience" aria-labelledby="experience-title">
+        <h2 id="experience-title">Experience</h2>
         <div class="items">
           <article class="entry">
-            <h3 class="entry-title">Indian Institute of Technology Jodhpur</h3>
-            <p class="entry-meta">B.Tech in Engineering Science, Aug 2023 to May 2027</p>
-            <p class="fineprint entry-note">Majors: Computer Science and Electrical Engineering.</p>
-          </article>
-
-          <article class="entry">
             <h3 class="entry-title">Quantitative Data Engineering Intern, Detachmint Ventures Pvt. Ltd.</h3>
-            <p class="entry-meta">May 2025 to Jul 2025 (hybrid)</p>
+            <p class="entry-meta">May 2025 – Jul 2025 · Hybrid, India</p>
             <ul class="bullets">
-              <li>Implemented noise filtering (seasonality and liquidity filters) for time-series signals.</li>
-              <li>Built volatility-adaptive models (EWMA, GARCH) and validated behavior via historical simulation.</li>
-              <li>Engineered a simulation pipeline for 80+ parallel 1-minute streams in Python and pandas.</li>
-              <li>Deployed execution scripts via REST APIs with latency monitoring and error handling.</li>
+              <li>
+                Optimized signal processing algorithms for time-series data by implementing noise filtering (seasonality/liquidity filters),
+                resulting in improved predictive stability on out-of-sample data.
+              </li>
+              <li>
+                Designed volatility-adaptive statistical models (EWMA, GARCH) to minimize tail risk in stochastic systems, validating performance
+                through extensive historical simulation.
+              </li>
+              <li>
+                Engineered a high-throughput simulation pipeline processing 80+ parallel high-frequency data streams (1-min resolution) using
+                Python and Pandas, optimizing for memory efficiency and processing latency.
+              </li>
+              <li>
+                Deployed automated execution scripts via REST APIs, implementing real-time latency monitoring and error-handling protocols for
+                high-volume transaction systems.
+              </li>
             </ul>
           </article>
 
           <article class="entry">
             <h3 class="entry-title">BRAIN Research Consultant, WorldQuant</h3>
-            <p class="entry-meta">Dec 2023 to Sep 2025 (remote)</p>
+            <p class="entry-meta">Dec 2023 – Sep 2025 · Remote, Old Greenwich, CT</p>
             <ul class="bullets">
-              <li>Built algorithmic models for time-series prediction using statistical and ML approaches.</li>
-              <li>Ran 2000+ simulations and iterated strategies under the platform backtesting setup.</li>
+              <li>
+                Built algorithmic models using statistical and ML-driven techniques for time-series prediction, achieving high statistical
+                significance (Sharpe ratio &gt; 6) across 10 years of data.
+              </li>
+              <li>
+                Ran 2000+ simulations and implemented strategies that, after backtesting on 10+ years of historical data, demonstrated robust
+                performance on out-of-sample datasets.
+              </li>
             </ul>
-            <p class="fineprint">I treat these as platform results, not as claims about live trading performance.</p>
-          </article>
-
-          <article class="item">
-            <details>
-              <summary>
-                <span class="item-title">Benchmarks and competitions</span>
-                <span class="item-meta">Selection</span>
-              </summary>
-              <div class="item-body">
-                <ul class="bullets">
-                  <li>
-                    ICPC 2025 Online Winter Challenge (Huawei): global rank 192; heuristic algorithms for dynamic topology control and traffic load
-                    balancing in large optical networks.
-                  </li>
-                  <li>Baruch Pre-MFE (Linear Algebra): selected among 40 worldwide (distinction); advanced linear algebra and numerical methods.</li>
-                  <li>IIT Roorkee Trading Heist 2025: 6th of 631 teams (algorithmic strategy).</li>
-                  <li>Competitive programming: Codeforces rating 1736.</li>
-                  <li>JEE Advanced 2023: top 6.8% (200,000+ candidates).</li>
-                  <li>JEE Main 2023: top 2.1% (1.1M+ candidates).</li>
-                </ul>
-              </div>
-            </details>
           </article>
         </div>
       </section>
@@ -330,11 +539,12 @@
             about data movement and reproducibility.
           </p>
           <p>
-            For ML and statistics I have used PyTorch, scikit-learn, and XGBoost. For classical baselines and diagnostics, statsmodels and arch.
-            For workflow and small deployments, Git, Linux, Jupyter, REST APIs, and Streamlit.
+            Most of my work is numerical: time-series analysis, stochastic processes, Monte Carlo simulation, and PDE solving. In practice that
+            usually means NumPy, pandas, statsmodels, and arch (ARIMA, EWMA, GARCH).
           </p>
           <p class="fineprint">
-            Coursework spans algorithms, systems, signals, probability, and ML. Upcoming: time series analysis, optimization, autonomous systems.
+            Coursework includes algorithms, signals and systems, probability, and statistics and stochastic process. Upcoming: time series
+            analysis and optimization.
           </p>
         </div>
       </section>

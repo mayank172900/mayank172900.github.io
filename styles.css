@@ -112,9 +112,20 @@ summary:focus-visible {
   justify-content: space-between;
 }
 
+.masthead-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
 @media (max-width: 740px) {
   .masthead-inner {
     flex-direction: column;
+  }
+
+  .masthead-aside {
+    align-items: flex-start;
   }
 }
 
@@ -132,15 +143,30 @@ h1 {
   max-width: 62ch;
 }
 
-.note {
-  margin: 0;
-  color: var(--muted);
-  max-width: 62ch;
+.portrait {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--faint);
+  box-shadow: var(--shadow);
 }
 
-.masthead-fineprint {
-  margin-top: var(--space-2);
-  max-width: 62ch;
+.portrait-fallback,
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.portrait-fallback {
+  padding: 10px;
+}
+
+.portrait-img {
+  object-fit: cover;
 }
 
 .controls {
@@ -209,6 +235,12 @@ h1 {
   color: var(--text);
 }
 
+.index a[aria-current="true"] {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
 .content {
   max-width: var(--content-max);
   margin: 0 auto;
@@ -229,6 +261,14 @@ h2 {
   font-size: 1.2rem;
   margin: 0 0 var(--space-3);
   letter-spacing: -0.01em;
+}
+
+.section-lede {
+  margin: 0 0 var(--space-3);
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: 0.96rem;
+  max-width: 70ch;
 }
 
 .subhead {
@@ -309,6 +349,43 @@ h2 {
   background: var(--surface);
 }
 
+.filter-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.filter-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: min(18rem, 100%);
+}
+
+.filter-label-text {
+  font-family: var(--ui);
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.filter-input {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ui);
+  font-size: 0.95rem;
+}
+
+.filter-input::placeholder {
+  color: var(--faint);
+}
+
 .filter-group {
   border: none;
   padding: 0;
@@ -361,6 +438,12 @@ h2 {
   background: var(--bg);
   background: color-mix(in srgb, var(--bg) 88%, var(--surface));
   box-shadow: var(--shadow);
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+
+.item:hover,
+.entry:hover {
+  border-color: color-mix(in srgb, var(--border) 60%, var(--text));
 }
 
 details {
@@ -371,39 +454,95 @@ summary {
   list-style: none;
   cursor: pointer;
   display: grid;
-  gap: 0.25rem;
+  grid-template-columns: 2.25rem 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  row-gap: 0.2rem;
+  align-items: center;
 }
 
 summary::-webkit-details-marker {
   display: none;
 }
 
-summary::before {
+summary::after {
   content: "+";
   font-family: var(--mono);
   color: var(--faint);
-  float: right;
-  margin-left: var(--space-3);
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  align-self: center;
 }
 
-details[open] summary::before {
+details[open] summary::after {
   content: "−";
+}
+
+.item-icon {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--bg) 82%, var(--surface));
+  border: 1px solid var(--border);
+  color: var(--faint);
+}
+
+.item-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+  display: block;
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+
+.item:hover .item-icon svg {
+  transform: translateY(-1px);
+  opacity: 0.95;
 }
 
 .item-title {
   font-family: var(--ui);
   font-weight: 600;
   color: var(--text);
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .item-meta {
   font-family: var(--ui);
   font-size: 0.9rem;
   color: var(--muted);
+  grid-column: 2 / span 2;
+  grid-row: 2;
 }
 
 .item-body {
   margin-top: var(--space-3);
+}
+
+.item-media {
+  margin: var(--space-3) 0;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 2px);
+  overflow: hidden;
+  color: var(--faint);
+  background: color-mix(in srgb, var(--bg) 86%, var(--surface));
+  height: clamp(140px, 18vw, 190px);
+}
+
+.item-shot,
+.item-diagram {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.item-shot {
+  object-fit: cover;
 }
 
 .item-note {
@@ -438,6 +577,14 @@ details[open] summary::before {
 
 .entry-note {
   margin-top: var(--space-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .entry,
+  .item-icon svg {
+    transition: none;
+  }
 }
 
 .footer {

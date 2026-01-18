@@ -1,11 +1,10 @@
-HEAD
 # Mayank Sharma site
 
 A small, research-first personal site intended for GitHub Pages.
 
 ## Local preview
 
-From the `research-portfolio` folder:
+From this folder:
 
 ```bash
 python3 -m http.server 8000
@@ -23,5 +22,11 @@ Then open `http://localhost:8000`.
 
 - The site avoids external dependencies and uses system fonts.
 - `assets/cv.pdf` is the downloadable CV used by the site.
-# mayank172900.github.io-
-eeb985f80f7316f45eac60585f4a9142f793036d
+
+## Optional visuals
+
+- Headshot: add `assets/headshot.jpg` (square is best).
+- Project screenshots: add PNGs in `assets/shots/` using these names:
+  - `stochastic-control.png`
+  - `supply-chain.png`
+  - `energy-forecasting.png`
