@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Research threads and builds by Mayank Sharma. Leakage-aware time series, robustness, and control." />
+    <title>Mayank Sharma</title>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("site-theme");
+          if (stored === "light" || stored === "dark") document.documentElement.dataset.theme = stored;
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <div class="title-block">
+          <h1>Mayank Sharma</h1>
+          <p class="lede">
+            I am a B.Tech student at IIT Jodhpur (Engineering Science, majors in Computer Science and Electrical Engineering).
+            I work on time series and control problems where protocol details change conclusions.
+          </p>
+          <p class="note">
+            I like problems where you can be wrong for subtle reasons: leakage in time series, non-stationarity, reward misspecification, and
+            distribution shift.
+          </p>
+          <p class="fineprint masthead-fineprint">
+            A few defaults I try to keep: avoid random splits on time series, treat transaction costs as first-order, and write down what would
+            falsify a result.
+          </p>
+        </div>
+
+        <div class="controls" aria-label="Site controls">
+          <div class="theme" role="group" aria-label="Theme">
+            <button class="btn btn-quiet" type="button" data-theme-value="light">Light</button>
+            <button class="btn btn-quiet" type="button" data-theme-value="dark">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta">
+        <a class="meta-link" href="mailto:may1729int@gmail.com">may1729int@gmail.com</a>
+        <span class="meta-sep" aria-hidden="true">·</span>
+        <a class="meta-link" href="https://linkedin.com/in/mayank-sharma-356999291" rel="me">linkedin.com/in/mayank-sharma-356999291</a>
+      </div>
+
+      <nav class="index" aria-label="On-page navigation">
+        <a href="#threads">Threads</a>
+        <a href="#work">Work</a>
+        <a href="#builds">Builds</a>
+        <a href="#tools">Tools</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="content" class="content">
+      <section id="threads" aria-labelledby="threads-title">
+        <div class="section-head">
+          <h2 id="threads-title">Threads</h2>
+          <div class="section-actions">
+            <button class="btn btn-quiet" type="button" data-details-scope="threads" data-details-action="open">Open all</button>
+            <button class="btn btn-quiet" type="button" data-details-scope="threads" data-details-action="close">Close all</button>
+          </div>
+        </div>
+
+        <form class="filters" data-filter-scope="threads" aria-label="Thread filters">
+          <fieldset class="filter-group">
+            <legend class="filter-legend">Filter by theme (intersection)</legend>
+            <label class="chip">
+              <input type="checkbox" name="tag" value="time-series" />
+              <span>Time series</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="tag" value="leakage" />
+              <span>Leakage</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="tag" value="sentiment" />
+              <span>Sentiment</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="tag" value="rl" />
+              <span>RL</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="tag" value="control" />
+              <span>Control</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="tag" value="robustness" />
+              <span>Robustness</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="tag" value="distribution-shift" />
+              <span>Distribution shift</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="tag" value="algorithms" />
+              <span>Algorithms</span>
+            </label>
+          </fieldset>
+          <div class="filter-status" aria-live="polite" data-filter-status="threads"></div>
+        </form>
+
+        <div class="items" data-details-container="threads">
+          <article class="item" data-kind="threads" data-tags="time-series leakage sentiment robustness">
+            <details>
+              <summary>
+                <span class="item-title">Leakage-aware time-series evaluation</span>
+                <span class="item-meta">University of Birmingham (Dubai Campus), May 2025 to present</span>
+              </summary>
+              <div class="item-body">
+                <p class="item-note">
+                  Advisor: Prof. Monita Baruah
+                </p>
+                <ul class="bullets">
+                  <li>
+                    Built an out-of-fold sentiment pipeline using teacher-student distillation (FinBERT to RATAT),
+                    with embargoed splits, to produce daily sentiment signals for AAPL, NVDA, and BTC-USD.
+                  </li>
+                  <li>
+                    Compared price-only vs sentiment-augmented forecasting and trading using purged CV,
+                    Diebold-Mariano / Clark-West tests, and cost-aware backtests.
+                  </li>
+                  <li>
+                    Readout: modest uplift on NVDA, degradation on BTC and AAPL under the same protocol.
+                  </li>
+                </ul>
+                <p class="fineprint">
+                  I care about protocols that make negative results legible, not embarrassing.
+                </p>
+              </div>
+            </details>
+          </article>
+
+          <article class="item" data-kind="threads" data-tags="rl control robustness">
+            <details>
+              <summary>
+                <span class="item-title">Reward design in stochastic control</span>
+                <span class="item-meta">North Carolina State University (remote), Jan 2026 to present</span>
+              </summary>
+              <div class="item-body">
+                <p class="item-note">Advisor: Prof. Aritra Mitra</p>
+                <ul class="bullets">
+                  <li>Studying reward design in control settings, especially where the reward is an imperfect proxy for what we want.</li>
+                  <li>Analyzing policy optimization under stochastic dynamics and reward misspecification, including stability and sensitivity.</li>
+                  <li>As an implementation check, I built an HJB PDE solver for a stochastic inventory control toy problem (Nov 2024).</li>
+                </ul>
+                <p class="fineprint">This is early-stage work. I am treating it as a careful reading and experiment loop.</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="item" data-kind="threads" data-tags="distribution-shift robustness">
+            <details>
+              <summary>
+                <span class="item-title">Distribution shift and test-time adaptation</span>
+                <span class="item-meta">IIT Jodhpur, Dec 2025 to present</span>
+              </summary>
+              <div class="item-body">
+                <p class="item-note">Advisor: Prof. Pratik Mazumder</p>
+                <ul class="bullets">
+                  <li>Studying FTAT methods that let a pre-trained model adapt during deployment.</li>
+                  <li>Focusing on improving performance under shifting distributions without access to original training data.</li>
+                </ul>
+              </div>
+            </details>
+          </article>
+
+          <article class="item" data-kind="threads" data-tags="algorithms">
+            <details>
+              <summary>
+                <span class="item-title">Algorithms on hard graphs</span>
+                <span class="item-meta">IIT Jodhpur, Aug 2024 to Nov 2024</span>
+              </summary>
+              <div class="item-body">
+                <p class="item-note">Advisor: Prof. Lawqueen Kanesh</p>
+                <ul class="bullets">
+                  <li>Worked on NP-hard graph optimization with formal proofs for time complexity bounds.</li>
+                  <li>Implemented FPT algorithms including kernelization, and benchmarked against greedy baselines.</li>
+                  <li>In competitive settings, I have built heuristics for large network optimization (ICPC 2025 Online Winter Challenge).</li>
+                </ul>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section id="builds" aria-labelledby="builds-title">
+        <div class="section-head">
+          <h2 id="builds-title">Builds</h2>
+          <div class="section-actions">
+            <button class="btn btn-quiet" type="button" data-details-scope="builds" data-details-action="open">Open all</button>
+            <button class="btn btn-quiet" type="button" data-details-scope="builds" data-details-action="close">Close all</button>
+          </div>
+        </div>
+
+        <div class="items" data-details-container="builds">
+          <article class="item" data-kind="build">
+            <details>
+              <summary>
+                <span class="item-title">Stochastic optimal control simulation and HJB PDE solving</span>
+                <span class="item-meta">Independent project, Nov 2024</span>
+              </summary>
+              <div class="item-body">
+                <ul class="bullets">
+                  <li>Simulated stochastic inventory dynamics and boundary controls under Brownian Motion constraints (Python, NumPy).</li>
+                  <li>Implemented a numerical solver for the Hamilton-Jacobi-Bellman PDE to derive optimal control policies.</li>
+                  <li>Extended the simulator with adaptive variance parameters to study stability tradeoffs.</li>
+                </ul>
+              </div>
+            </details>
+          </article>
+
+          <article class="item" data-kind="build">
+            <details>
+              <summary>
+                <span class="item-title">Blockchain supply chain management system</span>
+                <span class="item-meta">IIT Jodhpur, Apr 2025</span>
+              </summary>
+              <div class="item-body">
+                <ul class="bullets">
+                  <li>Built a distributed logging core in C++ with OpenSSL, with Python bindings (Pybind11) for scripting and visualization.</li>
+                  <li>Added REST services and a Streamlit dashboard for real-time tracking of product flows.</li>
+                </ul>
+              </div>
+            </details>
+          </article>
+
+          <article class="item" data-kind="build">
+            <details>
+              <summary>
+                <span class="item-title">Short-term energy load forecasting with LSTMs</span>
+                <span class="item-meta">Independent ML project, Oct 2024</span>
+              </summary>
+              <div class="item-body">
+                <ul class="bullets">
+                  <li>Built an LSTM forecasting model for hourly energy consumption using historical and meteorological features.</li>
+                  <li>Used lag features, rolling statistics, and Fourier-based seasonality features.</li>
+                  <li>Compared against ARIMA and Gradient Boosting and saw a 22% RMSE reduction on the dataset used.</li>
+                </ul>
+              </div>
+            </details>
+          </article>
+
+          <article class="item" data-kind="build">
+            <details>
+              <summary>
+                <span class="item-title">AmplifyME finance accelerator</span>
+                <span class="item-meta">Aug 2025</span>
+              </summary>
+              <div class="item-body">
+                <ul class="bullets">
+                  <li>Sales and trading simulations; ranked top 22%.</li>
+                  <li>Managed a simulated USD 20M client portfolio under volatile market regimes.</li>
+                </ul>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section id="work" aria-labelledby="work-title">
+        <h2 id="work-title">Work</h2>
+        <div class="items">
+          <article class="entry">
+            <h3 class="entry-title">Indian Institute of Technology Jodhpur</h3>
+            <p class="entry-meta">B.Tech in Engineering Science, Aug 2023 to May 2027</p>
+            <p class="fineprint entry-note">Majors: Computer Science and Electrical Engineering.</p>
+          </article>
+
+          <article class="entry">
+            <h3 class="entry-title">Quantitative Data Engineering Intern, Detachmint Ventures Pvt. Ltd.</h3>
+            <p class="entry-meta">May 2025 to Jul 2025 (hybrid)</p>
+            <ul class="bullets">
+              <li>Implemented noise filtering (seasonality and liquidity filters) for time-series signals.</li>
+              <li>Built volatility-adaptive models (EWMA, GARCH) and validated behavior via historical simulation.</li>
+              <li>Engineered a simulation pipeline for 80+ parallel 1-minute streams in Python and pandas.</li>
+              <li>Deployed execution scripts via REST APIs with latency monitoring and error handling.</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <h3 class="entry-title">BRAIN Research Consultant, WorldQuant</h3>
+            <p class="entry-meta">Dec 2023 to Sep 2025 (remote)</p>
+            <ul class="bullets">
+              <li>Built algorithmic models for time-series prediction using statistical and ML approaches.</li>
+              <li>Ran 2000+ simulations and iterated strategies under the platform backtesting setup.</li>
+            </ul>
+            <p class="fineprint">I treat these as platform results, not as claims about live trading performance.</p>
+          </article>
+
+          <article class="item">
+            <details>
+              <summary>
+                <span class="item-title">Benchmarks and competitions</span>
+                <span class="item-meta">Selection</span>
+              </summary>
+              <div class="item-body">
+                <ul class="bullets">
+                  <li>
+                    ICPC 2025 Online Winter Challenge (Huawei): global rank 192; heuristic algorithms for dynamic topology control and traffic load
+                    balancing in large optical networks.
+                  </li>
+                  <li>Baruch Pre-MFE (Linear Algebra): selected among 40 worldwide (distinction); advanced linear algebra and numerical methods.</li>
+                  <li>IIT Roorkee Trading Heist 2025: 6th of 631 teams (algorithmic strategy).</li>
+                  <li>Competitive programming: Codeforces rating 1736.</li>
+                  <li>JEE Advanced 2023: top 6.8% (200,000+ candidates).</li>
+                  <li>JEE Main 2023: top 2.1% (1.1M+ candidates).</li>
+                </ul>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section id="tools" aria-labelledby="tools-title">
+        <h2 id="tools-title">Tools</h2>
+        <div class="prose">
+          <p>
+            I prototype in Python, then move parts into C++ when performance or control matters. I use SQL and Bash when the work becomes
+            about data movement and reproducibility.
+          </p>
+          <p>
+            For ML and statistics I have used PyTorch, scikit-learn, and XGBoost. For classical baselines and diagnostics, statsmodels and arch.
+            For workflow and small deployments, Git, Linux, Jupyter, REST APIs, and Streamlit.
+          </p>
+          <p class="fineprint">
+            Coursework spans algorithms, systems, signals, probability, and ML. Upcoming: time series analysis, optimization, autonomous systems.
+          </p>
+        </div>
+      </section>
+
+      <section id="cv" aria-labelledby="cv-title">
+        <h2 id="cv-title">CV</h2>
+        <p class="prose">
+          <a class="btn btn-primary" href="./assets/cv.pdf" download>Download CV (PDF)</a>
+        </p>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p class="prose">
+          Email works: <a href="mailto:may1729int@gmail.com">may1729int@gmail.com</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="fineprint">
+        This site is intentionally small. If something here looks underspecified, the CV link is the complete record.
+      </p>
+    </footer>
+  </body>
+</html>
