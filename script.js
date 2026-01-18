@@ -126,11 +126,18 @@ function initTagFilters() {
   function updateStatus(scope, visible, total, activeTags, hasQuery) {
     const node = document.querySelector(`[data-filter-status='${scope}']`);
     if (!node) return;
+    const nouns =
+      scope === "research"
+        ? { singular: "research entry", plural: "research entries" }
+        : { singular: "item", plural: "items" };
+    const noun = total === 1 ? nouns.singular : nouns.plural;
+
     if (activeTags.length === 0 && !hasQuery) {
-      node.textContent = `${total} items`;
+      node.textContent = `Showing ${total} ${noun}`;
       return;
     }
-    node.textContent = `${visible} of ${total} items`;
+
+    node.textContent = `Showing ${visible} of ${total} ${noun}`;
   }
 
   for (const form of forms) {
