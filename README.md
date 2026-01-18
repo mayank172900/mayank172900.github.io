@@ -1,3 +1,4 @@
+HEAD
 # Mayank Sharma site
 
 A small, research-first personal site intended for GitHub Pages.
@@ -22,3 +23,5 @@ Then open `http://localhost:8000`.
 
 - The site avoids external dependencies and uses system fonts.
 - `assets/cv.pdf` is the downloadable CV used by the site.
+# mayank172900.github.io-
+eeb985f80f7316f45eac60585f4a9142f793036d
