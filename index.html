@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem("theme");
+        var preferredTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        var theme = storedTheme || preferredTheme;
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.style.colorScheme = "dark";
+      }
+    }());
+  </script>
+  <title>Mayank Sharma — Quantitative Research &amp; Machine Learning</title>
+  <meta name="description" content="Mayank Sharma is an undergraduate researcher at IIT Jodhpur working on quantitative finance, market microstructure, financial ML, test-time adaptation, open-set recognition, and wireless receiver design.">
+  <link rel="canonical" href="https://mayank172900.github.io/">
+  <meta name="theme-color" content="#0B0E14">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Mayank Sharma — Quantitative Research &amp; Machine Learning">
+  <meta property="og:description" content="Undergraduate researcher working on market microstructure under model ambiguity, leakage-safe financial ML, test-time adaptation, open-set recognition theory, and wireless receiver design.">
+  <meta property="og:url" content="https://mayank172900.github.io/">
+  <meta property="og:site_name" content="Mayank Sharma">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mayank Sharma — Quantitative Research &amp; Machine Learning">
+  <meta name="twitter:description" content="Quantitative research at the edge of markets and machine learning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0E14'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia,serif' font-size='24' font-weight='700' fill='%23E8B45A'%3EMS%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mayank Sharma",
+      "url": "https://mayank172900.github.io/",
+      "email": "mailto:may1729int@gmail.com",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Indian Institute of Technology Jodhpur"
+      },
+      "sameAs": [
+        "https://github.com/mayank172900",
+        "https://orcid.org/0009-0005-4249-3733",
+        "https://www.linkedin.com/in/mayank"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand-mark" href="#home" aria-label="Mayank Sharma home">
+        <span aria-hidden="true">MS</span>
+      </a>
+      <div class="nav-links" data-nav-links>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="theme-toggle" type="button" aria-label="Toggle light theme" aria-pressed="false" data-theme-toggle>
+        <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2.75v2.1M12 19.15v2.1M4.85 4.85l1.49 1.49M17.66 17.66l1.49 1.49M2.75 12h2.1M19.15 12h2.1M4.85 19.15l1.49-1.49M17.66 6.34l1.49-1.49"></path>
+        </svg>
+        <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M20.2 14.4A7.7 7.7 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"></path>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section" id="home" aria-labelledby="hero-title">
+      <canvas class="hero-canvas" data-hawkes-canvas aria-hidden="true"></canvas>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-kicker mono">Quantitative Research · Machine Learning · IIT Jodhpur</p>
+        <h1 id="hero-title">Mayank Sharma</h1>
+        <p class="hero-tagline">Quantitative research at the edge of markets and machine learning.</p>
+        <p class="hero-position">
+          Undergraduate researcher working on market microstructure under model ambiguity, leakage-safe financial ML,
+          test-time adaptation, open-set recognition theory, and wireless receiver design.
+        </p>
+        <ul class="keyword-list" aria-label="Research keywords">
+          <li>Market Microstructure</li>
+          <li>Hawkes Processes</li>
+          <li>Robust Control</li>
+          <li>Financial NLP</li>
+          <li>Test-Time Adaptation</li>
+          <li>Open-Set Recognition</li>
+          <li>ZAK-OTFS</li>
+        </ul>
+        <div class="hero-actions" aria-label="Primary links">
+          <a href="mailto:may1729int@gmail.com">Email</a>
+          <a href="https://github.com/mayank172900" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://orcid.org/0009-0005-4249-3733" target="_blank" rel="noopener noreferrer">ORCID</a>
+          <!-- TODO: confirm LinkedIn handle -->
+          <a href="https://www.linkedin.com/in/mayank" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="button button-primary" href="assets/cv.pdf" download>Download CV</a>
+        </div>
+      </div>
+      <a class="process-caption mono" href="#paper-hawkes">λ(t) — self-exciting point process</a>
+      <a class="scroll-cue mono" href="#about" aria-label="Scroll to about section">About</a>
+    </section>
+
+    <section class="section content-section reveal" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <p class="section-index mono">01</p>
+        <h2 id="about-title">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>
+            I'm an undergraduate at IIT Jodhpur studying Engineering Science with majors in Computer Science and
+            Electrical Engineering. My research sits where stochastic modeling meets real systems: market making under
+            model ambiguity, leakage-controlled financial NLP, parameter-efficient test-time adaptation, and the geometry
+            of open-set recognition.
+          </p>
+          <p>
+            I care about results that survive adversarial evaluation: purged cross-validation, embargoed splits, and
+            reproducibility packages, not just results that look good in-sample. Previously, I worked on quantitative
+            research at WorldQuant BRAIN and completed a quant data engineering internship at Detachmint Ventures.
+          </p>
+        </div>
+        <aside class="glance-card" aria-label="At a glance">
+          <div class="glance-mark" aria-hidden="true">
+            <span>MS</span>
+          </div>
+          <dl class="glance-list">
+            <dt>IIT Jodhpur</dt>
+            <dd>B.Tech '27</dd>
+            <dt>Publications</dt>
+            <dd>5 papers</dd>
+            <dt>Competitive programming</dt>
+            <dd>Codeforces Expert</dd>
+            <dt>Research identity</dt>
+            <dd><a href="https://orcid.org/0009-0005-4249-3733" target="_blank" rel="noopener noreferrer">ORCID</a></dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section content-section reveal" id="publications" aria-labelledby="publications-title">
+      <div class="section-heading">
+        <p class="section-index mono">02</p>
+        <h2 id="publications-title">Publications &amp; Preprints</h2>
+      </div>
+      <div class="publication-list">
+        <article class="publication-card" id="paper-hawkes">
+          <div class="paper-number mono" aria-hidden="true">01</div>
+          <div class="paper-body">
+            <div class="paper-meta-row">
+              <p class="paper-venue mono">Preprint · 2026</p>
+              <span class="status-badge status-preprint">Preprint</span>
+            </div>
+            <h3>Structural Hawkes Ambiguity in Near-Critical Market Making</h3>
+            <p class="paper-authors"><strong>M. Sharma</strong>, R. K. Mourya</p>
+            <p class="paper-summary">
+              Spectral robust-control framework showing model ambiguity in a Hawkes branching matrix is economically
+              amplified near criticality; stress-tested on LOBSTER and Binance limit-order-book data.
+            </p>
+            <div class="paper-actions">
+              <a href="https://ssrn.com/abstract=6777719" target="_blank" rel="noopener noreferrer">SSRN 6777719</a>
+              <a href="https://doi.org/10.5281/zenodo.20341461" target="_blank" rel="noopener noreferrer">DOI 10.5281/zenodo.20341461</a>
+              <button type="button" data-bib-id="hawkes">Copy BibTeX</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication-card" id="paper-sentiment">
+          <div class="paper-number mono" aria-hidden="true">02</div>
+          <div class="paper-body">
+            <div class="paper-meta-row">
+              <p class="paper-venue mono">Under review · 2026 · SSRN preprint; target: ACM ICAIF 2026</p>
+              <span class="status-badge status-review">Under review</span>
+            </div>
+            <h3>Does Teacher-Matching Sentiment Quality Translate into Trading Edge?</h3>
+            <p class="paper-authors"><strong>M. Sharma</strong>, M. Baruah</p>
+            <p class="paper-summary">
+              Leakage-controlled, multi-seed distillation test of FinBERT-based sentiment trading across 33 US equities;
+              reported edges do not survive purged cross-validation and embargoed splits.
+            </p>
+            <div class="paper-actions">
+              <button type="button" data-bib-id="sentiment">Copy BibTeX</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication-card" id="paper-simplex">
+          <div class="paper-number mono" aria-hidden="true">03</div>
+          <div class="paper-body">
+            <div class="paper-meta-row">
+              <p class="paper-venue mono">Under review · 2026 · target: Transactions on Machine Learning Research (TMLR)</p>
+              <span class="status-badge status-review">Under review</span>
+            </div>
+            <h3>Simplex-Ratio Open-Set Recognition Beyond the Simplex Regime</h3>
+            <p class="paper-authors"><strong>M. Sharma</strong> et al.</p>
+            <p class="paper-summary">
+              Extends regular-simplex open-set analysis to the low-dimensional regime d &lt; C − 1; derives rejection
+              geometry, threshold selection, and graceful-degradation guarantees with cross-domain validation.
+            </p>
+            <div class="paper-actions">
+              <button type="button" data-bib-id="simplex">Copy BibTeX</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication-card" id="paper-lora">
+          <div class="paper-number mono" aria-hidden="true">04</div>
+          <div class="paper-body">
+            <div class="paper-meta-row">
+              <p class="paper-venue mono">Under review · 2026 · target: NeurIPS 2026 Workshop (working title)</p>
+              <span class="status-badge status-review">Under review</span>
+            </div>
+            <h3>Low-Rank Test-Time Adaptation for Tabular Models</h3>
+            <p class="paper-authors"><strong>M. Sharma</strong>, P. Mazumder</p>
+            <p class="paper-summary">
+              LoRA-style low-rank FTTA cutting trainable adaptation parameters by 96.8%–98.1% versus full-alpha while
+              holding near-parity accuracy; exact base-model behavior when adaptation is disabled.
+            </p>
+            <div class="paper-actions">
+              <button type="button" data-bib-id="lora">Copy BibTeX</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication-card" id="paper-zak">
+          <div class="paper-number mono" aria-hidden="true">05</div>
+          <div class="paper-body">
+            <div class="paper-meta-row">
+              <p class="paper-venue mono">In preparation · 2026 · target: IEEE conference (ICC / GLOBECOM) (working title)</p>
+              <span class="status-badge status-prep">In preparation</span>
+            </div>
+            <h3>ZAK-OTFS Receiver Design for Doubly-Dispersive Channels</h3>
+            <p class="paper-authors"><strong>M. Sharma</strong> et al.</p>
+            <p class="paper-summary">
+              Equalization and receiver design for ZAK-OTFS under high-mobility doubly-dispersive channels, with
+              regression-tested reproducible experiments.
+            </p>
+            <div class="paper-actions">
+              <button type="button" data-bib-id="zak">Copy BibTeX</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="copy-status mono" aria-live="polite" data-copy-status></p>
+    </section>
+
+    <section class="section content-section reveal" id="research" aria-labelledby="research-title">
+      <div class="section-heading">
+        <p class="section-index mono">03</p>
+        <h2 id="research-title">Research</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <div class="timeline-top">
+              <h3>Undergraduate Researcher — Financial NLP</h3>
+              <time class="mono">May 2025 – Present</time>
+            </div>
+            <p class="timeline-meta mono">University of Birmingham (Dubai Campus) · Advisor: Prof. Monita Baruah</p>
+            <ul>
+              <li>Leakage-safe financial NLP via teacher–student distillation (FinBERT → RATAT with temporal embeddings), strict out-of-fold training, embargoed time-series splits across equity and crypto assets.</li>
+              <li>Daily sentiment-factor pipelines; forecasting impact measured under purged cross-validation with Diebold–Mariano and Clark–West tests.</li>
+              <li>Asset-level robustness and degradation analysis showing sentiment effectiveness is strongly market-structure dependent.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <div class="timeline-top">
+              <h3>Independent Research — Quantitative Finance &amp; Market Microstructure</h3>
+              <time class="mono">2025 – 2026</time>
+            </div>
+            <p class="timeline-meta mono">IIT Jodhpur, with R. K. Mourya</p>
+            <ul>
+              <li>Spectral robust-control framework for market making under ambiguity in Hawkes order-flow models; branching-matrix uncertainty amplified through the resolvent near criticality.</li>
+              <li>Reproducible stress-test pipelines (common-random-number Ogata simulation); calibrated public Hawkes models on LOBSTER and Binance LOB data; released as preprint with full reproducibility package.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <div class="timeline-top">
+              <h3>Undergraduate Researcher — Deep Learning (Test-Time Adaptation)</h3>
+              <time class="mono">Dec 2025 – Present</time>
+            </div>
+            <p class="timeline-meta mono">IIT Jodhpur · Advisor: Prof. Pratik Mazumder</p>
+            <ul>
+              <li>LoRA-style low-rank alpha FTTA in PyTorch; frozen pretrained weights, exact base-model behavior when adaptation is disabled.</li>
+              <li>96.8%–98.1% reduction in trainable adaptation parameters vs full-alpha with near-parity accuracy on HELOC and Diabetes.</li>
+              <li>Batch-level FTTA analytics with automated CSV reporting.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <div class="timeline-top">
+              <h3>Independent Research — Open-Set Recognition Theory</h3>
+              <time class="mono">2025 – 2026</time>
+            </div>
+            <p class="timeline-meta mono">IIT Jodhpur, with collaborators</p>
+            <ul>
+              <li>Extended regular-simplex OSR to d &lt; C − 1; rejection geometry, threshold-selection rules, graceful-degradation guarantees.</li>
+              <li>Validated against reproduced medical-imaging baselines and cross-domain experiments (AUROC, OSCR, FAR–KRR tradeoffs, symmetry-defect metrics).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <div class="timeline-top">
+              <h3>Research — Wireless Communications (ZAK-OTFS)</h3>
+              <time class="mono">2026 – Present</time>
+            </div>
+            <p class="timeline-meta mono">IIT Jodhpur</p>
+            <ul>
+              <li>Receiver and equalization design for ZAK-OTFS under high-mobility doubly-dispersive channels; regression-tested reproducible experiments.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <div class="timeline-top">
+              <h3>Researcher — Graph Theory &amp; Algorithms (Feedback Vertex Set)</h3>
+              <time class="mono">Aug 2024 – Nov 2024</time>
+            </div>
+            <p class="timeline-meta mono">IIT Jodhpur · Advisor: Prof. Lawqueen Kanesh</p>
+            <ul>
+              <li>NP-hard graph optimization; formal proofs for time-complexity bounds on large-scale network topologies.</li>
+              <li>FPT algorithms incl. kernelization; benchmarked against greedy baselines.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section content-section reveal" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <p class="section-index mono">04</p>
+        <h2 id="experience-title">Industry</h2>
+      </div>
+      <div class="industry-grid">
+        <article class="industry-card">
+          <p class="stat mono">80+ streams</p>
+          <h3>Quantitative Data Engineering Intern</h3>
+          <p class="industry-meta mono">Detachmint Ventures Pvt. Ltd. · Hybrid, India · May 2025 – Jul 2025</p>
+          <ul>
+            <li>Signal-processing pipelines for time-series data with seasonality/liquidity noise filters; improved out-of-sample predictive stability.</li>
+            <li>Volatility-adaptive statistical models (EWMA, GARCH) to reduce tail risk, validated via historical simulation.</li>
+            <li>High-throughput pipeline processing 80+ parallel 1-minute data streams in Python/Pandas, tuned for memory efficiency and latency.</li>
+          </ul>
+        </article>
+        <article class="industry-card">
+          <p class="stat mono">2,000+ alphas</p>
+          <h3>BRAIN Research Consultant</h3>
+          <p class="industry-meta mono">WorldQuant · Remote · Dec 2023 – Sep 2025</p>
+          <ul>
+            <li>Researched and backtested 2,000+ systematic alpha signals across 10+ years of equity data (simulated Sharpe &gt; 3 in backtest).</li>
+            <li>Strict in-sample/out-of-sample separation; prioritized OOS stability and low signal decay.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section content-section reveal" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <p class="section-index mono">05</p>
+        <h2 id="projects-title">Selected Projects</h2>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Stochastic Optimal Control &amp; PDE Solving</h3>
+            <time class="mono">Nov 2024</time>
+          </div>
+          <p>Numerical Hamilton–Jacobi–Bellman (HJB) PDE solver for optimal control policies; stochastic inventory dynamics and boundary controls under Brownian-motion constraints.</p>
+          <div class="tag-row mono">
+            <span>Python</span>
+            <span>NumPy</span>
+            <span>Matplotlib</span>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Short-Term Energy Load Forecasting with LSTMs</h3>
+            <time class="mono">Oct 2024</time>
+          </div>
+          <p>LSTM forecaster for hourly energy demand with engineered temporal features; 22% RMSE reduction vs ARIMA and Gradient Boosting baselines.</p>
+          <div class="tag-row mono">
+            <span>PyTorch</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section content-section reveal" id="awards" aria-labelledby="awards-title">
+      <div class="section-heading">
+        <p class="section-index mono">06</p>
+        <h2 id="awards-title">Achievements &amp; Awards</h2>
+      </div>
+      <div class="award-grid">
+        <article class="award-tile">
+          <p class="award-stat mono">Top 40</p>
+          <h3>STEMS Residential Camp, CMI (2026)</h3>
+          <p>Top 40 nationwide; fully funded research-oriented mathematics camp at Chennai Mathematical Institute.</p>
+        </article>
+        <article class="award-tile">
+          <p class="award-stat mono">#192</p>
+          <h3>ICPC 2025 Online Winter Challenge (Huawei)</h3>
+          <p>Global Rank 192; heuristics for dynamic topology control and traffic load balancing in large-scale optical networks.</p>
+        </article>
+        <article class="award-tile">
+          <p class="award-stat mono">40 worldwide</p>
+          <h3>Baruch Pre-MFE, Linear Algebra</h3>
+          <p>Selected among 40 worldwide; completed with Distinction.</p>
+        </article>
+        <article class="award-tile">
+          <p class="award-stat mono">Top 2.1%</p>
+          <h3>JEE Main 2023</h3>
+          <p>Top 2.1% of 1.1M+; JEE Advanced 2023 Top 6.8% of 200,000+.</p>
+        </article>
+        <article class="award-tile">
+          <p class="award-stat mono">6 / 631</p>
+          <h3>IIT Roorkee Trading Heist 2025</h3>
+          <p>6th of 631 teams nationwide (algorithmic strategy).</p>
+        </article>
+        <article class="award-tile">
+          <p class="award-stat mono">1736</p>
+          <h3>Codeforces Expert</h3>
+          <p>Rating 1736.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section content-section reveal" id="skills" aria-labelledby="skills-title">
+      <div class="section-heading">
+        <p class="section-index mono">07</p>
+        <h2 id="skills-title">Skills</h2>
+      </div>
+      <div class="skills-list">
+        <div class="skill-row">
+          <h3>Programming</h3>
+          <div class="tag-row mono">
+            <span>C++ (STL, memory management)</span>
+            <span>Python (NumPy, PyTorch, Pybind11)</span>
+            <span>SQL</span>
+            <span>Bash</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h3>Scientific computing</h3>
+          <div class="tag-row mono">
+            <span>time-series (ARIMA, LSTM)</span>
+            <span>stochastic processes</span>
+            <span>numerical optimization</span>
+            <span>PDE solving</span>
+            <span>Monte Carlo</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h3>ML &amp; statistics</h3>
+          <div class="tag-row mono">
+            <span>PyTorch</span>
+            <span>scikit-learn</span>
+            <span>XGBoost</span>
+            <span>pandas</span>
+            <span>statsmodels</span>
+            <span>arch</span>
+            <span>TA-Lib</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h3>Tools</h3>
+          <div class="tag-row mono">
+            <span>Git</span>
+            <span>Linux</span>
+            <span>Jupyter</span>
+            <span>Backtrader</span>
+            <span>Streamlit</span>
+            <span>REST APIs</span>
+            <span>OpenSSL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section reveal" id="contact" aria-labelledby="contact-title">
+      <div class="contact-inner">
+        <p class="section-index mono">08</p>
+        <h2 id="contact-title">Let's talk research.</h2>
+        <a class="contact-email" href="mailto:may1729int@gmail.com">may1729int@gmail.com</a>
+        <div class="contact-links" aria-label="Contact links">
+          <a href="mailto:may1729int@gmail.com" aria-label="Email Mayank Sharma">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3.5 6.5h17v11h-17z"></path><path d="m4 7 8 6 8-6"></path></svg>
+          </a>
+          <a href="https://github.com/mayank172900" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2.75a9.25 9.25 0 0 0-2.92 18.03c.46.08.63-.2.63-.44v-1.72c-2.56.56-3.1-1.1-3.1-1.1-.42-1.07-1.03-1.36-1.03-1.36-.84-.57.06-.56.06-.56.93.07 1.42.96 1.42.96.83 1.41 2.17 1 2.7.77.08-.6.32-1 .58-1.23-2.04-.23-4.19-1.02-4.19-4.55 0-1 .36-1.83.95-2.48-.1-.23-.41-1.18.09-2.44 0 0 .78-.25 2.54.95A8.8 8.8 0 0 1 12 7.29c.78 0 1.56.1 2.29.31 1.76-1.2 2.53-.95 2.53-.95.5 1.26.19 2.21.09 2.44.59.65.95 1.48.95 2.48 0 3.54-2.15 4.32-4.2 4.55.33.28.62.84.62 1.69v2.53c0 .24.17.53.64.44A9.25 9.25 0 0 0 12 2.75Z"></path></svg>
+          </a>
+          <a href="https://orcid.org/0009-0005-4249-3733" target="_blank" rel="noopener noreferrer" aria-label="ORCID profile">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.25"></circle><path d="M9 8v8M11.1 8h2.15c2.35 0 3.75 1.55 3.75 4s-1.4 4-3.75 4H11.1"></path><path d="M7.9 6.35h.02"></path></svg>
+          </a>
+          <!-- TODO: confirm LinkedIn handle -->
+          <a href="https://www.linkedin.com/in/mayank" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5.2 9.3v9.5M5.2 5.2v.1M10 18.8V9.3M10 13.2c.55-2.85 5.8-3.25 5.8 1.1v4.5"></path><path d="M3.2 3.2h17.6v17.6H3.2z"></path></svg>
+          </a>
+          <a href="assets/cv.pdf" aria-label="Download CV" download>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3.5v10"></path><path d="m8.2 10.2 3.8 3.8 3.8-3.8"></path><path d="M5 19.5h14"></path></svg>
+          </a>
+        </div>
+        <footer class="site-footer">
+          <p>© 2026 Mayank Sharma · Built with plain HTML, CSS, and a Hawkes process.</p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
