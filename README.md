@@ -1,6 +1,6 @@
 # Mayank Sharma Academic Website
 
-Pure static personal academic website for Mayank Sharma, built from `CONTENT.md` and `DESIGN_SPEC.md` with plain HTML, CSS, and vanilla JavaScript. The site includes a dark/light theme toggle, responsive academic sections, copyable BibTeX entries, and an ambient Hawkes-process hero canvas.
+Pure static personal academic website for Mayank Sharma, typeset as a hand-set research paper with Tufte-style sidenotes, reference-list publications, night reading mode, and a live Hawkes-process Figure 1.
 
 ## Deploy to GitHub Pages
 

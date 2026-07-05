@@ -1,56 +1,53 @@
-# Design Spec — mayank172900.github.io v2
+# Design Spec v3 — "The Typeset Site" (full redesign; discard the previous dark/amber design entirely)
 
-Goal: a premium, memorable, research-forward personal site for a quant/ML undergraduate researcher. Audience: professors, recruiters, collaborators, funding committees. It must feel like a crafted academic object, not a template.
+Concept: the site IS a beautifully typeset research paper. Not a portfolio that mentions research — an artifact that looks and reads like a lovingly hand-set academic document (think Tufte CSS / distill.pub / gwern.net lineage, executed with real craft). Visitors (professors, committees) should feel "this person lives inside papers." Nothing about it may resemble the generic dark-gradient/accent-chips/cards portfolio genre.
 
-## Hard constraints
+## Explicitly banned (the "AI-ish" tells we are removing)
 
-- Pure static: `index.html`, `styles.css`, `main.js` only (plus `assets/`). No build step, no frameworks, no bundler. Must work by opening index.html from a file:// URL and on GitHub Pages.
-- External requests allowed ONLY for Google Fonts. Everything else self-contained. Favicon = inline SVG data URI (monogram "MS" in the accent color).
-- Lighthouse-grade quality: semantic HTML5, AA contrast in both themes, keyboard navigable, `prefers-reduced-motion` fully honored (all animation including the hero canvas becomes a static frame), lazy/idle initialization of the canvas, fonts loaded with `display=swap`, page weight (excluding fonts/CV) under ~120 KB.
-- SEO: title "Mayank Sharma — Quantitative Research & Machine Learning", meta description, canonical `https://mayank172900.github.io/`, OpenGraph + Twitter card tags, JSON-LD `Person` schema (name, affiliation IIT Jodhpur, ORCID, GitHub, email).
-- All content comes from CONTENT.md. Do not invent facts. Keep publication status labels exactly as given (Preprint / Under review / In preparation).
-
-## Signature element (the thing people remember)
-
-Hero background: a live, subtle **self-exciting Hawkes process visualization** on a `<canvas>` — a direct nod to his flagship preprint. Event ticks arrive along a baseline (Poisson immigrants), each event spikes an intensity curve λ(t) that decays exponentially and raises the chance of offspring events (clustering). Render:
-- a thin luminous intensity curve scrolling right-to-left,
-- event ticks as small vertical marks / soft glow dots on the baseline,
-- occasional cluster bursts so the self-excitement is visible.
-Keep it quiet and elegant: low contrast against the background (accent color at ~15–35% alpha), ~30–60 fps with cheap math, capped device-pixel-ratio, paused when tab hidden or hero scrolled out of view (IntersectionObserver). It should read as ambient texture, not a screensaver. A small caption in the hero corner: `λ(t) — self-exciting point process` in mono font, linking to paper #1's section entry.
+- No dark-first theme, no glowing canvas backdrops, no gradient or glow anywhere.
+- No pill chips, no badge pills, no rounded cards with hover-lift, no icon rows of rounded squares.
+- No "Let's talk research." style CTA, no scroll-reveal animations, no sticky translucent blurred nav.
+- No Inter, no Fraunces, no JetBrains Mono.
 
 ## Aesthetic
 
-- **Default theme: dark.** Ink near-black (#0B0E14-ish) background, warm off-white text, ONE accent — warm amber/gold (#E8B45A-ish family). Light theme: warm paper white, near-black text, deeper amber accent. Theme toggle in nav (sun/moon inline SVG), persisted to localStorage, no flash-of-wrong-theme (inline script in <head> sets `data-theme` before paint), respects `prefers-color-scheme` on first visit.
-- **Type:** Fraunces (display serif; name, section headings, paper titles) + Inter (body) + JetBrains Mono (labels, dates, statuses, numbers, the λ caption). Big confident hero name (clamp ~3.5–6rem). Generous line-height, max text measure ~68ch.
-- **Layout:** single page, centered column (max-width ~1080px), generous vertical rhythm (sections ~7–9rem apart). Sticky top nav: monogram "MS" left; links Research · Publications · Experience · Projects · Awards · Contact; theme toggle right. Nav gets a translucent blur background after scrolling. Active section highlighted via IntersectionObserver. Smooth anchor scrolling.
-- Subtle texture is welcome (very faint grid or noise), but restraint wins: one accent, lots of space, crisp hairline borders (1px, low-alpha).
+- **Paper:** warm ivory background (#FAF7F0 family), near-black ink (#1A1712 family). Text is king. Accent: a single classic **scholar's red** (#8C2B2B family — the red of numbered citations in old journals), used only for links, section numbers (§), figure labels, and small rules. Optional very-faint paper grain is fine; must be imperceptible at a glance.
+- **Type (Google Fonts):** STIX Two Text for everything body/serif — it's a scientific-publishing face and instantly reads "journal." Use its real italics and small caps styling (font-variant: small-caps), old-style numerals where supported (font-variant-numeric: oldstyle-nums) for running text, lining + tabular numerals in tables. A monospace only for code-like fragments and the BibTeX block: use "Spline Sans Mono" or "IBM Plex Mono" sparingly.
+- **Measure & rhythm:** main text column ~62ch, justified with hyphens: auto on wide screens (text-align: justify + hyphens), ragged-right on mobile. Baseline-ish vertical rhythm, hairline (1px) rules to separate major parts. First paragraph after each heading gets no indent; subsequent paragraphs indent 1.5em with no inter-paragraph margin (true book typesetting).
+- **Layout:** centered page column (max ~1000px) with, on ≥1100px viewports, a right margin column (~220px) for **sidenotes** — numbered like Tufte sidenotes, small type, hairline top rule. On smaller screens sidenotes become tappable inline notes (a superscript red number toggles a collapsible note below the line). No sticky nav: a compact **Contents** block near the top (dotted leaders, § numbers, page-style layout) with plain anchor links; plus a tiny fixed "↑ top" text link bottom-right after scrolling.
+- **Dark mode:** keep support but frame it as "night reading" — warm low-light paper (#17140F bg, #E7DFD2 ink, red slightly desaturated), toggled by a small text link in the header line ("night mode" / "day mode"), persisted, no icon buttons. Default follows prefers-color-scheme, day otherwise.
 
-## Sections (in order)
+## Structure (single index.html, in this order)
 
-1. **Hero** — canvas background; small mono kicker ("Quantitative Research · Machine Learning · IIT Jodhpur"), huge serif name, tagline, 2-sentence positioning line, research-keyword chips (mono, hairline borders), then link row: Email · GitHub · ORCID · LinkedIn · **Download CV** (primary button, accent). Scroll cue at bottom.
-2. **About** — short bio (from CONTENT.md) beside a compact "at a glance" card: IIT Jodhpur · B.Tech '27 · 5 papers · Codeforces Expert · ORCID link. No headshot (none available) — instead a refined monogram/generative mark is fine.
-3. **Publications & Preprints** — the centerpiece. Numbered list of wide cards: serif title, authors (Mayank bold), venue/target line in mono, status as a small badge (distinct tint per status: Preprint = accent fill; Under review = outline; In preparation = dashed outline), one-line summary, link pills (SSRN, DOI) where available, and a "Copy BibTeX" button (clipboard API + copied! feedback; graceful fallback). Hover: hairline border warms to accent, slight lift.
-4. **Research** — vertical timeline (hairline spine, accent nodes): role, institution, advisor/collaborator in mono, dates right-aligned, 2–3 bullets each. Newest first.
-5. **Industry** — two compact cards (Detachmint, WorldQuant) with the standout stat pulled out large in mono (e.g., "2,000+ alphas", "80+ streams").
-6. **Projects** — two cards with tech tags.
-7. **Awards** — grid of stat tiles: big mono number/rank ("Top 40", "#192", "40 worldwide", "Top 2.1%", "6 / 631", "1736") + caption. This section should feel like a scoreboard.
-8. **Skills** — compact grouped rows, mono tags. Keep it short.
-9. **Contact / footer** — "Let's talk research." + email as the big serif link, icon row, CV link, the footer line from CONTENT.md.
+1. **Title block** (like a paper's first page): small-caps running head line at very top: "MAYANK SHARMA · IIT JODHPUR · 2026" left, "mayank172900.github.io" right, hairline rule under it. Then centered: huge title — his name in STIX (normal case, not small caps, ~clamp 3–4.5rem); beneath it an author-line style row: "B.Tech Engineering Science (CS & EE), Indian Institute of Technology Jodhpur"; beneath that a contact line in the exact style journals use: email · GitHub · ORCID · LinkedIn · CV (pdf) — plain red text links separated by middots, no icons, no buttons.
+2. **Abstract.** Heading "Abstract" centered small-caps; the bio from CONTENT.md set slightly smaller and indented both sides (classic abstract block). Follow with a **Keywords:** line in italics (the research keywords from CONTENT.md, comma-separated — not chips).
+3. **Contents.** §1 About … §8 Colophon with dotted leaders. Anchor links.
+4. **§1 About** — 'At a glance' facts get worked into sidenotes (e.g., a sidenote for Codeforces rating, one for the ORCID link) rather than a card.
+5. **§2 Publications & Preprints** — set as a real reference list: hanging-indent entries numbered [1]–[5]. Each entry: authors (M. Sharma in small caps or bold as journals do), title in italics, venue/target + year, then status in true small caps parenthetical: (preprint), (under review), (in preparation). Links as trailing plain red links: SSRN · DOI · BibTeX. "BibTeX" toggles an inline <details>-style block showing the entry in a bordered mono block with a small "copy" text link. The one-line summaries from CONTENT.md go in as a short roman-type sentence after the citation OR as sidenotes — pick whichever reads cleaner, be consistent.
+6. **§3 Figure 1** — the signature element, now diegetic: an academic figure INSIDE the flow between §2 and §4 (or within §2's Hawkes entry vicinity). A canvas drawing of a simulated self-exciting Hawkes intensity λ(t): thin ink stroke on paper, hairline axes with tick marks and axis labels (t, λ(t)) in small type, event times as tiny tick marks along the axis, drawn progressively left→right like a plotter, then it holds; a small red "re-run simulation" text link below re-seeds and redraws. Ink color = text ink (red for event ticks only). Caption underneath in proper figure style: "**Figure 1.** Simulated intensity of a self-exciting (Hawkes) process; each event momentarily raises the arrival rate of the next. From [1]." — with [1] linking to the reference. Static final frame (no progressive draw) under prefers-reduced-motion. This must look like a figure lifted from a good journal, not a data-viz widget.
+7. **§4 Research** (timeline as a plain CV-style list: bold role line, italic institution/advisor line, right-aligned date range on the same line via flex, then 2–3 bullets) and **§5 Industry** in the same typographic system. A standout number (2,000+ alphas, 80+ streams) may appear as a sidenote, not a big stat tile.
+8. **§6 Projects** — two short entries, same list style.
+9. **§7 Awards** — a two-column table (award · detail) with hairline row rules and tabular numerals, OR a compact list with the rank figures in red small caps at line start ("top 40 —", "rank 192 —"). No tiles.
+10. **§8 Skills** — a few lines: "Programming — C++, Python…" set as run-in headings (italic label, roman list). Tiny section.
+11. **Colophon** (footer): a short honest paragraph: "Typeset in STIX Two Text on a plain HTML page — no frameworks, no build step. Figure 1 is drawn live in a <canvas>. Source on GitHub. © 2026 Mayank Sharma." plus repeat of the contact line. Hairline rule above.
 
-## Motion
+## Interaction & motion (minimal, precise)
 
-- Scroll-reveal: sections/cards fade-up ~12px with slight stagger, IntersectionObserver, once only, disabled under reduced motion.
-- Micro-interactions: buttons/links have precise hover/focus states (accent underline slide or border warm-up). Focus-visible rings everywhere.
-- No parallax, no cursor followers, no scroll hijacking.
+- Only these behaviors: night-mode toggle (persisted, no flash), sidenote toggling on narrow screens, BibTeX expand + copy (clipboard with execCommand fallback + "copied" text feedback), Figure 1 plotter draw + re-run, smooth anchor scroll, "↑ top" link appearing after ~1.5 viewport scroll. Nothing else. No IntersectionObserver reveal effects.
+- Reduced motion: no plotter animation (draw final frame instantly), no smooth scroll.
 
-## Code quality
+## Print stylesheet (a signature feature — committees print things)
 
-- Modern vanilla JS (ES modules not required; single `main.js` IIFE is fine), no dependencies. CSS custom properties for the full theme system. Clean class naming (BEM-ish or utility-lite, consistent). Comment the Hawkes simulation math briefly (immigrant rate μ, branching α, decay β; keep branching ratio < 1).
-- `README.md`: one short paragraph + how to deploy to GitHub Pages (push to mayank172900.github.io, main branch).
-- Keep `CONTENT.md` and `DESIGN_SPEC.md` out of the deployed page's nav/links but leave the files in the repo.
+@media print: hide toggle/re-run/top links, black ink on white, show URLs after links in parentheses via ::after for the contact and reference links, sensible page margins, avoid breaking inside reference entries and the figure. The page should print as a genuinely handsome document.
+
+## Technical (unchanged constraints)
+
+- index.html + styles.css + main.js only; no build step; Google Fonts only external (STIX Two Text + chosen mono, display=swap); works from file://; favicon inline SVG — a red "§" or "MS" in STIX style on ivory.
+- Semantic HTML (use <article>, <section>, <aside> for sidenotes, <figure>/<figcaption>, <nav> for Contents, <details> ok for BibTeX). AA contrast both modes. Keyboard accessible; visible focus (thin red outline offset).
+- SEO/JSON-LD/OpenGraph exactly as before (same URLs from CONTENT.md; title "Mayank Sharma — Quantitative Research & Machine Learning"). Phone number nowhere.
+- All copy from CONTENT.md verbatim facts; statuses exactly Preprint / Under review / In preparation (rendered lowercase in small-caps parentheticals is fine). LinkedIn href stays https://www.linkedin.com/in/mayank with the TODO comment.
+- README.md: update one line to describe the new design.
 
 ## Definition of done
 
-- Renders beautifully at 375px, 768px, 1280px, 1600px in both themes.
-- No console errors; canvas degrades to static intensity curve under reduced motion; theme persists across reloads without flash.
-- Every link resolves to the URLs in CONTENT.md; phone number nowhere in the page.
+- Looks like a hand-set journal offprint at 1280; gracefully single-column at 375 with working inline sidenotes; night mode coherent; prints beautifully; zero console errors; no element that could be mistaken for a startup landing page.
