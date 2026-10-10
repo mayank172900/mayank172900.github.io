@@ -350,14 +350,25 @@
     resolveRefs();
   }
 
-  /* ------------------------------------------------------------------ theme: invert colors */
-  const darkMQ = window.matchMedia("(prefers-color-scheme: dark)");
-  const currentTheme = () => root.getAttribute("data-theme") || (darkMQ.matches ? "dark" : "light");
-  function invert(btn) {
-    const next = currentTheme() === "dark" ? "light" : "dark";
+  /* ------------------------------------------------------------------ theme: light by default, inverted on request */
+  const currentTheme = () => (root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+  function paintTheme() {
+    const t = currentTheme();
+    $$(".theme-switch button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.theme === t)));
+    const hb = doc.querySelector('#hud [data-act="invert"]');
+    if (hb) {
+      hb.querySelector(".lbl").textContent = t === "dark" ? "Light" : "Dark";
+      hb.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    }
+    const meta = doc.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = t === "dark" ? "#0D0E10" : "#E4E2DC";
+  }
+  function setTheme(next, btn) {
+    if (next === currentTheme()) return;
     const apply = () => {
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("theme", next); } catch (e) { /* storage unavailable */ }
+      paintTheme();
     };
     if (motion && doc.startViewTransition && btn) {
       const r = btn.getBoundingClientRect();
@@ -366,6 +377,11 @@
       doc.startViewTransition(apply);
     } else apply();
   }
+  const invert = (btn) => setTheme(currentTheme() === "dark" ? "light" : "dark", btn);
+  $("#theme-switch").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-theme]");
+    if (b) setTheme(b.dataset.theme, b);
+  });
 
   /* ------------------------------------------------------------------ HUD */
   const ICON = {
@@ -382,9 +398,10 @@
     <span class="pg" aria-label="Page"><span class="odo"><span class="odo-d" id="pg-d">${"0123456789".split("").map((n) => `<span>${n}</span>`).join("")}</span></span><span>/ ${sheets.length}</span></span>
     <button type="button" data-act="next" aria-label="Next page">${svg("next")}</button>
     <span class="sep" aria-hidden="true"></span>
-    <button type="button" data-act="invert" aria-label="Invert colors">${svg("invert")}<span class="lbl">Invert</span></button>
+    <button type="button" data-act="invert" aria-label="Switch to dark mode">${svg("invert")}<span class="lbl">Dark</span></button>
     <button type="button" data-act="recompile" aria-label="Recompile the page">${svg("redo")}<span class="lbl">Recompile</span></button>
     <a href="${esc(S.cv.file)}" download="Mayank_Sharma_CV.pdf" aria-label="Download CV as PDF">${svg("down")}<span class="lbl">PDF</span></a>`;
+  paintTheme();
   const pgD = $("#pg-d");
   const goPage = (n) => {
     const s = sheets[Math.max(0, Math.min(sheets.length - 1, n - 1))];

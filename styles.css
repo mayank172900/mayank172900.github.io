@@ -36,28 +36,7 @@
   color-scheme: light;
 }
 
-/* Dark mode is the PDF viewer's "invert colors" reading mode. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --desk: #0D0E10;
-    --sheet: #1A1B1F;
-    --ink: #E6E4DF;
-    --ink-2: #BAB8B2;
-    --ink-3: #8C8B86;
-    --hair: rgba(230, 228, 223, 0.16);
-    --ref: #F0897D;
-    --cite: #7FD1A8;
-    --url: #94B8F0;
-    --hl: rgba(255, 210, 80, 0.22);
-    --plot-1: #6CB4EA;
-    --plot-2: #FF9D4D;
-    --stamp: #5C5C5C;
-    --sheet-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), 0 22px 48px -22px rgba(0, 0, 0, 0.9);
-    --hud: #2E3035;
-    --hud-ink: #F1F0EC;
-    color-scheme: dark;
-  }
-}
+/* Dark mode is the PDF viewer's "invert colors" reading mode; light is the default. */
 :root[data-theme="dark"] {
   --desk: #0D0E10;
   --sheet: #1A1B1F;
@@ -681,6 +660,44 @@ html:not(.motion) .odo-d, .thumb-inner .odo-d { transition: none; }
 @media (max-width: 560px) { .hud .lbl { display: none; } }
 
 /* ==========================================================================
+   Light / Dark switch (always visible)
+   ========================================================================== */
+.theme-switch {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 95;
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--sheet);
+  border: 0.5px solid var(--hair);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  transition: background-color 0.4s;
+}
+.theme-switch button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 4px;
+  color: var(--ink-3);
+  transition: background-color 0.25s, color 0.25s;
+}
+.theme-switch svg { width: 13px; height: 13px; }
+.theme-switch button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); }
+.theme-switch button:hover:not([aria-pressed="true"]) { color: var(--ink); }
+/* Where the side margin is too narrow, the switch sits above the first page instead. */
+@media (max-width: 1240px) {
+  .theme-switch { position: absolute; top: 12px; right: 12px; }
+  .desk { padding-top: 56px; }
+}
+
+/* ==========================================================================
    Thumbnail rail with live viewport box
    ========================================================================== */
 .rail { display: none; }
@@ -789,7 +806,7 @@ html:not(.motion) .odo-d, .thumb-inner .odo-d { transition: none; }
 @media print {
   @page { size: letter; margin: 0; }
   body { background: #fff; }
-  .rail, .hud, .compile, .curl, .skip-link, .fctl, .legend, .lineno { display: none !important; }
+  .rail, .hud, .compile, .curl, .skip-link, .fctl, .legend, .lineno, .theme-switch { display: none !important; }
   .desk { padding: 0; }
   .sheet { box-shadow: none; width: 100%; aspect-ratio: auto; break-after: page; animation: none !important; transform: none !important; opacity: 1 !important; }
   .sheet + .sheet { margin-top: 0; }
