@@ -134,6 +134,10 @@
       <p>${abstract}</p>
     </section>
     <p class="keywords fade-in d3"><b>Keywords:</b> ${S.keywords.map(esc).join(" · ")}</p>
+    ${S.history && S.history.length ? `<section class="history fade-in d4" aria-labelledby="history-h">
+      <h2 class="history-h" id="history-h">Submission history</h2>
+      <ol>${S.history.map((h) => `<li><span class="h-date">${esc(h.date)}</span><span>${inline(h.text)}</span></li>`).join("")}</ol>
+    </section>` : ""}
     <nav class="contents fade-in d4" aria-labelledby="contents-h">
       <h2 class="contents-h" id="contents-h">Contents</h2>
       <ol class="toc">
@@ -923,7 +927,7 @@
       doc.removeEventListener("keydown", done);
     };
     lines.forEach(([cls, text]) => {
-      const delay = cls === "pages" ? 380 : cls === "cmd" ? 260 : 85;
+      const delay = cls === "pages" ? 200 : cls === "cmd" ? 140 : 40;
       t += delay;
       timers.push(setTimeout(() => {
         const span = doc.createElement("span");
@@ -933,7 +937,7 @@
         log.scrollTop = log.scrollHeight;
       }, t));
     });
-    timers.push(setTimeout(done, t + 520));
+    timers.push(setTimeout(done, t + 300));
     $(".compile-skip", overlay).addEventListener("click", done);
     doc.addEventListener("keydown", done);
   }

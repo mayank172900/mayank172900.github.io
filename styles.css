@@ -265,6 +265,11 @@ html.motion .rule-bot { transition-delay: 0.25s; }
 .keywords { margin: 16px auto 0; max-width: 34em; font-size: 0.95rem; }
 .keywords b { font-style: italic; }
 
+/* arXiv-style submission history: dated news on the title page. */
+.history { margin: clamp(24px, 3.4vw, 36px) auto 0; max-width: 34em; }
+.history-h { font-size: 1.08rem; font-weight: 700; margin-bottom: 6px; }
+.history li { display: grid; grid-template-columns: 5.2em minmax(0, 1fr); gap: 10px; padding: 2px 0; font-size: 0.93rem; line-height: 1.45; }
+.h-date { color: var(--ink-3); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
 .contents { margin: clamp(30px, 4vw, 44px) auto 0; max-width: 34em; }
 .contents-h { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; }
 .toc a { display: flex; align-items: baseline; gap: 8px; padding: 2px 0; color: var(--ink); }

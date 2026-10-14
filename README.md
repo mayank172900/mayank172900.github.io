@@ -11,10 +11,14 @@
 
 A publication's `group` (`accepted`, `review`, `preprint`) sets its status mark. Each research entry's `topics` (keyword indices) and `related` (publication ids) draw Figure 2.
 
+`history` holds the dated "Submission history" entries on the title page, newest first.
+
+**Keep the site and CV in sync:** after updating either one, run `node tools/check-cv-sync.mjs` (needs `pdftotext`). It lists every publication, research, honor, skill or date in `data.js` that the CV PDF doesn't contain, and exits with status 1 if anything is missing.
+
 Other tasks:
 
-- **Update the CV:** replace `assets/Mayank_Sharma_CV.pdf` and change `cv.updated` in `data.js`.
+- **Update the CV:** replace `assets/Mayank_Sharma_CV.pdf`, change `cv.updated` in `data.js`, then run the sync check.
 - **Preview with a server (optional):** `python3 -m http.server 8746`, then open http://localhost:8746.
 - **Deploy:** copy these files to the root of the `mayank172900.github.io` repository and push.
 
-Motion is skipped for visitors who prefer reduced motion. The compile log plays once per browser session; the HUD's "Recompile" button replays it. Figure 1 is an illustration of a state-tracking task, not experimental data, and its caption says so.
+Motion is skipped for visitors who prefer reduced motion. The compile log (about 1.5 s) plays once per browser session; the HUD's "Recompile" button replays it. Figure 1 is an illustration of a state-tracking task, not experimental data, and its caption says so.

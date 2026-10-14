@@ -1,6 +1,6 @@
 /*
  * All site content lives here. Edit this file only; index.html and main.js render it.
- * Source of truth: Academic CV, updated 10 October 2026.
+ * Source of truth: Academic CV, updated 14 October 2026.
  *
  * Inline tokens in prose (abstract, intro, captions, footnotes):
  *   {cite:4}  {cite:6,7}   citation to publication id(s)
@@ -24,12 +24,12 @@ window.SITE = {
   // The page is set as a paper. When the title is the person's name, the author block shows the role instead.
   paper: {
     title: "Mayank Sharma",
-    stamp: "mayank172900.github.io   [cs.LG]   10 Oct 2026",
+    stamp: "mayank172900.github.io   [cs.LG]   14 Oct 2026",
     file: "mayank_sharma.tex",
   },
 
   abstract:
-    "I am an undergraduate researcher at the Indian Institute of Technology Jodhpur, pursuing a B.Tech. in Engineering Science with majors in Computer Science and Electrical Engineering (expected May 2027). My research interests are latent reasoning, world models, reliable ML evaluation, and scientific machine learning. This document collects {count:publications} papers and manuscripts ({count:accepted} accepted, {count:review} under review, {count:preprint} preprints), {count:research} research projects, industry experience, and selected honors.",
+    "I am an undergraduate researcher at the Indian Institute of Technology Jodhpur, pursuing a B.Tech. in Engineering Science with majors in Computer Science and Electrical Engineering (expected May 2027). My research interests are latent reasoning, world models (state tracking), reliable ML evaluation, and scientific machine learning. This document collects {count:publications} papers and manuscripts ({count:accepted} accepted, {count:review} under review, {count:preprint} preprints), {count:research} research projects, industry experience, and selected honors.",
 
   keywords: [
     "Latent reasoning",
@@ -58,9 +58,18 @@ window.SITE = {
     3: "Selected honors.",
   },
 
+  // Submission history on the title page, newest first. Dates are only as precise as the record allows.
+  history: [
+    { date: "Sep 2026", text: "UnitScope {cite:1} accepted as a poster at the NewInML Workshop @ NeurIPS 2026." },
+    { date: "2026", text: "Zak-OTFS estimator {cite:2} accepted at IEEE ANTS 2026 (IIT Roorkee, 17–20 December)." },
+    { date: "2026", text: "MacCode Lab {cite:3} accepted at the Agentic AI Evaluation Workshop @ ACM KDD 2026." },
+    { date: "Aug 2026", text: "Logit-Origin Centering {cite:4} posted to arXiv (2608.01074); under review at Neurocomputing." },
+    { date: "Jun 2026", text: "Balanced Prototype Codes {cite:5} posted to arXiv (2606.01883); under review at AAAI 2027." },
+  ],
+
   cv: {
     file: "assets/Mayank_Sharma_CV.pdf",
-    updated: "10 October 2026",
+    updated: "14 October 2026",
     pages: 2,
   },
 
@@ -110,7 +119,7 @@ window.SITE = {
       short: "Logit-origin centering",
       authors: ["M. Sharma", "R. K. Mourya", "P. Mazumder"],
       title: "Logit-Origin Centering for Singleton Test-Time Adaptation",
-      venue: "Applied Soft Computing",
+      venue: "Neurocomputing",
       status: "Under journal review, 2026",
       link: { label: "arXiv:2608.01074", url: "https://arxiv.org/abs/2608.01074" },
     },
@@ -150,29 +159,28 @@ window.SITE = {
   // together they draw Figure 2.
   research: [
     {
+      title: "Shared randomness and sampler implementations",
+      short: "Shared randomness",
+      dates: "Sep 2026 – Present",
+      meta: "Independent research · Manuscript in development",
+      bullets: [
+        "Studying when exact samplers need memory to optimize paired evaluations under shared randomness. Built exact-arithmetic proof checks and a held-out scheduling benchmark that exposed limits of the proposed compiler.",
+      ],
+      topics: [2],
+      related: [],
+    },
+    {
       title: "Latent reasoning and mechanistic evaluation",
       short: "Latent reasoning",
       dates: "Aug 2026 – Present",
       meta: "B.Tech. project, IIT Jodhpur · Supervisor: Prof. Deeksha Varshney",
       bullets: [
         "Studying how positional spacing, attention routing, and answer format affect the execution of latent reasoning on synthetic state-tracking tasks.",
-        "Extended the experiments to Qwen2.5-0.5B with LoRA and a task-specific vocabulary. In one seed, wide-gap training reached 97.3% accuracy at length 64 versus 2.5% with narrow gaps, after training only on lengths 1–7.",
         "Tested a format that completes the final state update before answering. On a 0.87M-parameter model, held-out length-64 accuracy was 99.8% and 99.3% across two seeds; an extra-step control gave mixed results.",
+        "Extended the experiments to Qwen2.5-0.5B with LoRA and a task-specific vocabulary. In one seed, wide-gap training reached 97.3% accuracy at length 64 versus 2.5% with narrow gaps, after training only on lengths 1–7.",
       ],
-      topics: [0],
+      topics: [0, 1],
       related: [],
-    },
-    {
-      title: "Singleton test-time adaptation",
-      short: "Singleton TTA",
-      dates: "Dec 2025 – Present",
-      meta: "IIT Jodhpur · Advisor: Prof. Pratik Mazumder",
-      bullets: [
-        "Proposed PLOC, a label-free correction for streaming tabular classification that keeps the source model frozen and stores one running scalar per logit.",
-        "Evaluated five benchmarks, three architectures, and five source checkpoints; developed a deferred variant that preserves the source ranking and AUROC exactly.",
-      ],
-      topics: [],
-      related: [4],
     },
     {
       title: "UnitScope and safe reinforcement learning",
@@ -201,26 +209,28 @@ window.SITE = {
     {
       title: "ML evaluation and efficient implementations",
       short: "ML evaluation",
-      dates: "2026 – Present",
+      dates: "Jan 2026 – Present",
       meta: "Independent research, IIT Jodhpur",
       bullets: [
         "Built MacCode Lab, a reproducible harness for execution-guided code agents on Apple Silicon; evaluated when repair improves hidden-test performance and when public tests mislead.",
         "Studied balanced prototype geometry for open-set recognition and evaluated its behavior across multiple scoring rules.",
         "Implemented matrix-free Zak-OTFS operators that reduced saved-benchmark equalizer latency from 7.67 to 2.18 ms; prepared a reproducible release of the accepted ANTS estimator.",
+        "Developed llama.cpp Metal kernels on Apple Silicon (flash-attention prefill, grouped-query decode, Q8_0 matmul), giving a local 27B model 2.4× faster 128k-token prefill and 20–60% faster generation with identical greedy outputs.",
       ],
       topics: [2],
       related: [3, 5, 2],
     },
     {
-      title: "Shared randomness and sampler implementations",
-      short: "Shared randomness",
-      dates: "Sep 2026 – Present",
-      meta: "Independent research · Manuscript in development",
+      title: "Singleton test-time adaptation",
+      short: "Singleton TTA",
+      dates: "Dec 2025 – Present",
+      meta: "IIT Jodhpur · Advisor: Prof. Pratik Mazumder",
       bullets: [
-        "Studying when exact samplers need memory to optimize paired evaluations under shared randomness. Built exact-arithmetic proof checks and a held-out scheduling benchmark that exposed limits of the proposed compiler.",
+        "Proposed PLOC, a label-free correction for streaming tabular classification that keeps the source model frozen and stores one running scalar per logit.",
+        "Evaluated five benchmarks, three architectures, and five source checkpoints; developed a deferred variant that preserves the source ranking and AUROC exactly.",
       ],
-      topics: [2],
-      related: [],
+      topics: [],
+      related: [4],
     },
     {
       title: "Financial machine learning",
